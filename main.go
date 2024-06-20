@@ -40,7 +40,7 @@ func main() {
 		panic(err)
 	}
 
-	cfg.ConnConfig.Tracer = otelpgx.NewTracer()
+	cfg.ConnConfig.Tracer = otelpgx.NewTracer(otelpgx.WithTracerProvider(tp))
 
 	conn, err := pgxpool.NewWithConfig(ctx, cfg)
 	if err != nil {
